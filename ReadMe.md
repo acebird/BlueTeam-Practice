@@ -1,0 +1,1 @@
+This repository is a collection of scripts I might use for CCDC or general system hardening purposes.
