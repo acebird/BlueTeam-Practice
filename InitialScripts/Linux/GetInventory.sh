@@ -17,4 +17,8 @@ echo "Finding running services"
 
 ps awfux >> services.txt
 
+echo "Finding binaries on the system"
+
+ls /bin >> binaries.txt
+
 cd ~
