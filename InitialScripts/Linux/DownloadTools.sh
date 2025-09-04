@@ -30,6 +30,8 @@ install_with_apt() {
     echo "Installing AppArmour"
     sudo apt install apparmour
 
+    echo "Install rsyslog"
+    sudo apt-get install rsyslog"
 }
 
 
@@ -47,6 +49,9 @@ install_with_dnf() {
 
     echo "Installing AppArmour"
     sudo dnf install apparmour-utils
+
+    echo "Install rsyslog"
+    sudo dnf install rsyslog"
 }
 
 install_with_yum() {
@@ -63,6 +68,9 @@ install_with_yum() {
 
     echo "Installing AppArmour"
     sudo yum install apparmour-utils
+
+    echo "Install rsyslog"
+    sudo yum install rsyslog"
 }
 
 install_with_pacman() {
@@ -79,6 +87,9 @@ install_with_pacman() {
 
     echo "Installing AppArmour"
     sudo pacman -S apparmour-utils
+
+    echo "Install rsyslog"
+    sudo pacman -S install rsyslog"
 }
 
 install_with_zypper() {
@@ -95,4 +106,7 @@ install_with_zypper() {
 
     echo "Installing AppArmour"
     sudo zypper install apparmour
+
+    echo "Install rsyslog"
+    sudo zypper install rsyslog"
 }
