@@ -5,8 +5,8 @@ read -r -s -p "Enter password: " ADMIN_PASSWORD
 
 declare -A USERS
 USERS=(
-    [root]="$ADMIN_PASSWORD"
-    [sysadmin]="$ADMIN_PASSWORD"
+    [dreadpirate]="$ADMIN_PASSWORD"
+    [AdmiralNelson]="$ADMIN_PASSWORD"
 )
 
 # Change passwords for specified users with passwd
