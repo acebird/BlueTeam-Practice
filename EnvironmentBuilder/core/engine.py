@@ -24,15 +24,29 @@ class VulnEngine:
             vpath = vuln["path"]
             params = user_params[vid]
 
-            # Render setup template
-            setup_template = vpath / "setup_bash.j2"
-            if setup_template.exists():
-                code = self.renderer.render(setup_template, params)
-                rendered_blocks.append({
-                    "vuln_id": vid,
-                    "kind": "setup",
-                    "code": code
-                })
+                # Setup templates
+            for kind, suffix in [("setup", "setup"), ("exploit", "exploit")]:
+                # Bash
+                bash_tmpl = vpath / f"{suffix}_bash.j2"
+                if bash_tmpl.exists():
+                    code = self.renderer.render(bash_tmpl, params)
+                    rendered_blocks.append({
+                        "vuln_id": vid,
+                        "kind": kind,
+                        "lang": "bash",
+                        "code": code
+                    })
+
+                # Ansible (setup only)
+                ansible_tmpl = vpath / f"{suffix}_ansible.j2"
+                if ansible_tmpl.exists():
+                    code = self.renderer.render(ansible_tmpl, params)
+                    rendered_blocks.append({
+                        "vuln_id": vid,
+                        "kind": kind,
+                        "lang": "ansible",
+                        "code": code
+                    })
 
             # Render exploit template
             exploit_template = vpath / "exploit_bash.j2"
@@ -41,6 +55,7 @@ class VulnEngine:
                 rendered_blocks.append({
                     "vuln_id": vid,
                     "kind": "exploit",
+                    "lang": "bash",
                     "code": code
                 })
 

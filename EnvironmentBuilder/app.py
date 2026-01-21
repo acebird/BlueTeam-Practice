@@ -19,10 +19,17 @@ def main():
 
     outputs = engine.generate(selected_vulns, user_params)
 
-    print("=== SETUP SCRIPT ===")
-    print(outputs["bash_setup"])
-    print("\n=== EXPLOIT SCRIPT ===")
-    print(outputs["bash_exploit"])
+    if "bash_setup" in outputs:
+        print("=== BASH SETUP ===")
+        print(outputs["bash_setup"])
+
+    if "ansible_setup" in outputs:
+        print("\n=== ANSIBLE SETUP ===")
+        print(outputs["ansible_setup"])
+
+    if "bash_exploit" in outputs:
+        print("\n=== BASH EXPLOIT ===")
+        print(outputs["bash_exploit"])
 
 if __name__ == "__main__":
     main()

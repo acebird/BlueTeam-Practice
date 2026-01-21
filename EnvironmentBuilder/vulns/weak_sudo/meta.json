@@ -7,7 +7,7 @@
     {"name": "usernames", "type": "list", "required": true}
   ],
   "outputs": {
-    "setup": ["bash"],
+    "setup": ["bash", "ansible"],
     "exploit": ["bash"]
   }
 }

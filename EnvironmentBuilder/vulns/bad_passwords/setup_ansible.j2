@@ -1,0 +1,9 @@
+- name: Set weak passwords
+  hosts: all
+  become: true
+{% for user in usernames %}
+    - name: Set password for {{ user }}
+      user:
+        name: "{{ user }}"
+        password: "{{ password }}"
+{% endfor %}

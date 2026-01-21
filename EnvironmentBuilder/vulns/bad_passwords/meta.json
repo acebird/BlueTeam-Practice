@@ -8,7 +8,7 @@
     {"name": "password", "type": "string", "required": true}
   ],
   "outputs": {
-    "setup": ["bash"],
+    "setup": ["bash", "ansible"],
     "exploit": ["bash"]
   }
 }
