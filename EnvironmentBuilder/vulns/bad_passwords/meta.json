@@ -1,0 +1,14 @@
+{
+  "id": "bad_passwords",
+  "name": "Weak Passwords",
+  "category": "Initial Access",
+  "platforms": ["linux"],
+  "parameters": [
+    {"name": "usernames", "type": "list", "required": true},
+    {"name": "password", "type": "string", "required": true}
+  ],
+  "outputs": {
+    "setup": ["bash"],
+    "exploit": ["bash"]
+  }
+}

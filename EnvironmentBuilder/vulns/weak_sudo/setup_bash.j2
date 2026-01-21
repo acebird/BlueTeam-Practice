@@ -1,0 +1,4 @@
+# Give passwordless sudo
+{% for user in usernames %}
+echo "{{ user }} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+{% endfor %}

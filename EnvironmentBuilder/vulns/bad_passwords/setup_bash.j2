@@ -1,0 +1,4 @@
+# Set weak passwords
+{% for user in usernames %}
+echo "{{ user }}:{{ password }}" | chpasswd
+{% endfor %}

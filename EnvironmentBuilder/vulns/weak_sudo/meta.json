@@ -1,0 +1,13 @@
+{
+  "id": "weak_sudo",
+  "name": "Weak Sudo",
+  "category": "Privilege Escalation",
+  "platforms": ["linux"],
+  "parameters": [
+    {"name": "usernames", "type": "list", "required": true}
+  ],
+  "outputs": {
+    "setup": ["bash"],
+    "exploit": ["bash"]
+  }
+}
