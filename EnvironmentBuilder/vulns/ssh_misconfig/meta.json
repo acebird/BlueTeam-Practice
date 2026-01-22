@@ -1,0 +1,10 @@
+{
+  "id": "ssh_misconfig",
+  "name": "Poorly configured SSH",
+  "category": "Service Misconfig",
+  "platforms": ["linux"],
+  "outputs": {
+    "setup": ["bash", "ansible"],
+    "exploit": ["bash"]
+  }
+}

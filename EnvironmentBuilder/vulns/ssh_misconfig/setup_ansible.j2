@@ -1,0 +1,19 @@
+- name: Configure SSH daemon
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+{% raw %}
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+{% endraw %}
+    state: present
+  loop:
+    - { regexp: '^#?PasswordAuthentication', line: 'PasswordAuthentication yes' }
+    - { regexp: '^#?PermitRootLogin', line: 'PermitRootLogin yes' }
+    - { regexp: '^#?PermitEmptyPasswords', line: 'PermitEmptyPasswords yes' }
+  become: true
+
+- name: Restart SSH to apply config changes
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+  become: true

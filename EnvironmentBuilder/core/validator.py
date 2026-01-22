@@ -1,15 +1,23 @@
 class Validator:
-    def validate(self, selected_vulns, user_params):
-        for vuln in selected_vulns:
-            meta = vuln["meta"]
-            vid = meta["id"]
+    def __init__(self, registry):
+        self.registry = registry
 
-            if vid not in user_params:
-                raise ValueError(f"Missing parameters for {vid}")
+    def validate(self, selected_ids, user_params):
+        for vuln_id in selected_ids:
+            meta = self.registry.get(vuln_id)["meta"]
 
-            params = user_params[vid]
+            # Safely get parameters, default to empty list
+            params = meta.get("parameters", [])
 
-            for p in meta["parameters"]:
+            for p in params:
                 name = p["name"]
-                if p.get("required") and name not in params:
-                    raise ValueError(f"{vid}: Missing required parameter '{name}'")
+
+                if vuln_id not in user_params:
+                    raise ValueError(
+                        f"Missing parameter block for vuln '{vuln_id}'"
+                    )
+
+                if name not in user_params[vuln_id]:
+                    raise ValueError(
+                        f"Missing required parameter '{name}' for vuln '{vuln_id}'"
+                    )

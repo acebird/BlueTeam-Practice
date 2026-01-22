@@ -4,7 +4,7 @@ def main():
     engine = VulnEngine()
 
     # Simulated user selections from GUI
-    selected_vulns = ["bad_passwords", "weak_sudo"]
+    selected_vulns = ["bad_passwords", "weak_sudo", "dizquetv", "ssh_misconfig"]
 
     user_params = {
         "bad_passwords": {
@@ -14,6 +14,9 @@ def main():
         },
         "weak_sudo": {
             "usernames": ["alice"]
+        },
+        "dizquetv": {
+
         }
     }
 

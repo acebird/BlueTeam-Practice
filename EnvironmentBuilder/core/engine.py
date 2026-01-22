@@ -7,24 +7,26 @@ class VulnEngine:
     def __init__(self):
         self.registry = VulnRegistry()
         self.registry.load()
-        self.validator = Validator()
+        self.validator = Validator(self.registry)
         self.renderer = Renderer()
 
     def generate(self, selected_ids, user_params):
-        # Load selected vulnerabilities
-        selected = [self.registry.get(vid) for vid in selected_ids]
-
-        # Validate inputs
-        self.validator.validate(selected, user_params)
+        # Validate inputs using IDs only
+        self.validator.validate(selected_ids, user_params)
 
         rendered_blocks = []
+
+        # Now load full vuln objects
+        selected = [self.registry.get(vid) for vid in selected_ids]
 
         for vuln in selected:
             vid = vuln["meta"]["id"]
             vpath = vuln["path"]
-            params = user_params[vid]
 
-                # Setup templates
+            # Get params for this vuln (or empty dict if none)
+            params = user_params.get(vid, {})
+
+            # Setup and exploit templates
             for kind, suffix in [("setup", "setup"), ("exploit", "exploit")]:
                 # Bash
                 bash_tmpl = vpath / f"{suffix}_bash.j2"
@@ -47,17 +49,6 @@ class VulnEngine:
                         "lang": "ansible",
                         "code": code
                     })
-
-            # Render exploit template
-            exploit_template = vpath / "exploit_bash.j2"
-            if exploit_template.exists():
-                code = self.renderer.render(exploit_template, params)
-                rendered_blocks.append({
-                    "vuln_id": vid,
-                    "kind": "exploit",
-                    "lang": "bash",
-                    "code": code
-                })
 
         # Combine into final outputs
         return combine(rendered_blocks)

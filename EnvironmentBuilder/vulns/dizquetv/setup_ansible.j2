@@ -1,0 +1,38 @@
+# --- DizqueTV installation (direct binary) ---
+- name: Create dizquetv system user
+  ansible.builtin.user:
+    name: "dizquetv"
+    shell: /usr/sbin/nologin
+    create_home: no
+    system: yes
+
+- name: Create install directory
+  ansible.builtin.file:
+    path: "/opt/dizquetv"
+    state: directory
+    owner: "dizquetv"
+    group: "dizquetv"
+    mode: "0755"
+
+- name: Download DizqueTV 1.5.3 binary
+  ansible.builtin.get_url:
+    url: "https://github.com/vexorian/dizquetv/releases/download/1.5.3/dizquetv-linux-x64"
+    dest: "/opt/dizquetv/dizquetv"
+    mode: "0755"
+    owner: "dizquetv"
+    group: "dizquetv"
+
+- name: Deploy systemd service for DizqueTV
+  ansible.builtin.template:
+    src: dizquetv.service.j2
+    dest: /etc/systemd/system/dizquetv.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: reload systemd
+
+- name: Enable and start DizqueTV service
+  ansible.builtin.systemd:
+    name: dizquetv
+    state: started
+    enabled: yes

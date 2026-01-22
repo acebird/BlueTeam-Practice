@@ -1,0 +1,10 @@
+{
+  "id": "dizquetv",
+  "name": "DizqueTV Web Shell",
+  "category": "Initial Access",
+  "platforms": ["linux"],
+  "outputs": {
+    "setup": ["bash", "ansible"],
+    "exploit": ["bash"]
+  }
+}

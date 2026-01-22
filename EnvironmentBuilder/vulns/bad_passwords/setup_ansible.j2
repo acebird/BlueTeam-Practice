@@ -5,5 +5,7 @@
     - name: Set password for {{ user }}
       user:
         name: "{{ user }}"
-        password: "{{ password }}"
+{% raw %}
+        password: "{{ password | password_hash('sha512') }}"
+{% endraw %}
 {% endfor %}
