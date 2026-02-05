@@ -1,0 +1,20 @@
+# Last Modified: Wed Feb  4 01:45:06 2026
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/sbin/vsftpd {
+  include <abstractions/apache2-common>
+  include <abstractions/base>
+
+  capability sys_admin,
+
+  deny /var/log/vsftpd.log wk,
+  deny owner /etc/nsswitch.conf r,
+  deny owner /etc/passwd r,
+  deny owner /etc/vsftpd.conf r,
+  deny owner /home/*/ r,
+
+  /usr/sbin/vsftpd mr,
+
+}
