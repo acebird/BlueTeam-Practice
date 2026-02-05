@@ -199,6 +199,6 @@ $azurePath = "C:\Administrator"
 New-Item -Path $azurePath -ItemType Directory -Force | Out-Null
 
 # Create file with content
-Set-Content -Path (Join-Path $azurePath "azcopy.ps1") -Value "& "C:\Program Files\AzCopy\azcopy.exe" copy "C:\Administrator\The Durkee Files.txt" "https://feb5practice.blob.core.windows.net/feb5practice?sp=rw&st=2026-02-05T15:41:40Z&se=2026-02-06T04:59:40Z&spr=https&sv=2024-11-04&sr=c&sig=BisjDikoYvkNDFQieSgOp1O8jDBjwCFYJbjLynm3wRw%3D"
+Set-Content -Path (Join-Path $azurePath "azcopy.ps1") -Value '& "C:\Program Files\AzCopy\azcopy.exe" copy "C:\Administrator\The Durkee Files.txt" "https://feb5practice.blob.core.windows.net/feb5practice?sp=rw&st=2026-02-05T15:41:40Z&se=2026-02-06T04:59:40Z&spr=https&sv=2024-11-04&sr=c&sig=BisjDikoYvkNDFQieSgOp1O8jDBjwCFYJbjLynm3wRw%3D"'
 
 Write-Host "Durkee file created successfully."
