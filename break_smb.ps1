@@ -1,4 +1,4 @@
-$ShareFolder = "C:\Users\acebird\Documents"
+$ShareFolder = "C:\Shares\Public"
 
 #Stop SMB Service
 Stop-Service -Name "LanmanServer" -Force
