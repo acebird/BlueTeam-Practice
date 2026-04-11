@@ -1,0 +1,5 @@
+[
+  { "Port": 3389, "Protocol": "TCP", "Name": "RDP" },
+  { "Port": 5985, "Protocol": "TCP", "Name": "WinRM1" },
+  { "Port": 5986, "Protocol": "TCP", "Name": "WinRM2" },
+]
